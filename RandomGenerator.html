@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html ng-app="myApp">
+    <head lang="en">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Random Generator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="Style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+    </head>
+    <body ng-controller="myCtrl">
+        
+
+          <div class="bd-example bd-example-tabs">
+            <!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark rounded">
+    <a class="navbar-brand" href="#">
+      <img src="IMG_0982.JPG" width="30" height="30" class="d-inline-block align-top" alt="">
+      Computer Engineering Technology - Computer Science | CST8238 360 Web Programming 
+    </a>
+  </nav>
+            <div class="row">
+              <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="index.html" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="AreaCalculator.html" role="tab" aria-controls="v-pills-home" aria-selected="false">AreaCalculator</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="MultiplicationTable.html " role="tab" aria-controls="v-pills-profile" aria-selected="false">MultiplicationTable</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="RandomGenerator.html" role="tab" aria-controls="v-pills-messages" aria-selected="false">RandomGenerator</a>
+                  </div>
+              </div>
+              <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <h1>Random Number Generator</h1>
+                    <p>Please enter an interger:</p>
+                    <input type="number" ng-model="inputNumber">
+                    <button ng-click="generateRandomNumbers()">Generate</button>
+                    
+                    <h2>Distribution of randomly generated {{inputNumber}} Numbers: </h2>
+                    <ul>
+                        <li>Range 1-10: <span>{{ range1Count }}</span></li>
+                        <li>Range 11-20: <span>{{ range2Count }}</span></li>
+                        <li>Range 21-30: <span>{{ range3Count }}</span></li>
+                        <li>Range 31-40: <span>{{ range4Count }}</span></li>
+                        <li>Range 41-50: <span>{{ range5Count }}</span></li>
+                    </ul>
+                        </div>
+                        
+                    </p>
+                    
+                  </div>
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+<div class="card">
+    <h5 class="card-header">Footer</h5>
+    <div class="card-body">
+      <h5 class="card-title">Student Number: 041083055 <br> First Name: Ruan <br> Last Name: Simo Fotso<br></h5>
+      <a href="simo0173@algonquinlive.com">Mail: simo0173@algonquinlive.com</a> <br>
+      <a href="simo0173@algonquinlive.com" class="btn btn-primary">Send me an Email</a>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+      angular.module('myApp', [])
+          .controller('myCtrl', function ($scope) {
+              $scope.inputNumber = 0;
+              $scope.range1Count = 0;
+              $scope.range2Count = 0;
+              $scope.range3Count = 0;
+              $scope.range4Count = 0;
+              $scope.range5Count = 0;
+
+              $scope.generateRandomNumbers = function () {
+                  // Get user input
+                  const inputNumber = parseInt($scope.inputNumber);
+                  
+                  // Initialize counts for each range
+                  $scope.range1Count = 0;
+                  $scope.range2Count = 0;
+                  $scope.range3Count = 0;
+                  $scope.range4Count = 0;
+                  $scope.range5Count = 0;
+
+                  // Generate and categorize random numbers
+                  for (let i = 0; i < inputNumber; i++) {
+                      const randomNum = Math.floor(Math.random() * 50) + 1;
+                      
+                      if (randomNum >= 1 && randomNum <= 10) {
+                          $scope.range1Count++;
+                      } else if (randomNum >= 11 && randomNum <= 20) {
+                          $scope.range2Count++;
+                      } else if (randomNum >= 21 && randomNum <= 30) {
+                          $scope.range3Count++;
+                      } else if (randomNum >= 31 && randomNum <= 40) {
+                          $scope.range4Count++;
+                      } else if (randomNum >= 41 && randomNum <= 50) {
+                          $scope.range5Count++;
+                      }
+                  }
+              };
+          });
+  </script>
+
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    </body>
+</html>

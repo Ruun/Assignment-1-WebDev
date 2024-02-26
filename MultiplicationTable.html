@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Multiplication Table</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+</head>
+<body ng-controller="myCtrl">
+    <div class="bd-example bd-example-tabs">
+        <!-- Image and text -->
+        <nav class="navbar navbar-dark bg-dark rounded">
+            <a class="navbar-brand" href="#">
+                <img src="IMG_0982.JPG" width="30" height="30" class="d-inline-block align-top" alt="">
+                Computer Engineering Technology - Computer Science | CST8238 360 Web Programming 
+            </a>
+        </nav>
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="index.html" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="AreaCalculator.html" role="tab" aria-controls="v-pills-home" aria-selected="false">AreaCalculator</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="MultiplicationTable.html" role="tab" aria-controls="v-pills-profile" aria-selected="false">MultiplicationTable</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="RandomGenerator.html" role="tab" aria-controls="v-pills-messages" aria-selected="false">RandomGenerator</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <h1>This program generates the Multiplication Table</h1>
+                        <div>
+                            <label>Length:</label>
+                            <input type="number" ng-model="num" placeholder="Enter the length." ng-change="generateMultiplicationTable()">
+                            <hr>
+                            <h1>Multiplication Table of number {{num}} is:</h1>
+                            <p id="Text">{{ formattedTable }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Footer</h5>
+        <div class="card-body">
+            <h5 class="card-title">Student Number: 041083055 <br> First Name: Ruan <br> Last Name: Simo Fotso<br></h5>
+            <a href="simo0173@algonquinlive.com">Mail: simo0173@algonquinlive.com</a> <br>
+            <a href="simo0173@algonquinlive.com" class="btn btn-primary">Send me an Email</a>
+        </div>
+    </div>
+
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('myApp', [])
+            .controller('myCtrl', function ($scope) {
+                $scope.num = 1;
+                $scope.formattedTable = '';
+
+                $scope.generateMultiplicationTable = function () {
+                    let Lrange = $scope.num;
+                    let myArray = [];
+
+                    for (let i = 1; i <= Lrange; i++) {
+                        let row = [];
+                        for (let j = 1; j <= Lrange; j++) {
+                            row.push(i * j);
+                        }
+                        myArray.push(row);
+                    }
+
+                    // Convert myArray to a formatted string
+                    $scope.formattedTable = '[' + myArray.map(row => row.join(' ')).join(', ') + ']';
+                };
+            });
+    </script>
+</body>
+</html>
